@@ -15,32 +15,32 @@ const Schema = mongoose.Schema({
     },
     marca:{
         type:String,
-        required: false
+        required: true
     },
     descripcion: {
         type:String,
-        required: false
+        required: true
     },
     seccion:{
         type:String,
-        required: false,
+        required: true
     },
     precio:{
         type:Number,
-        required: false
+        required: true
     },
     cantidad:{
         type:Number,
-        required: false
+        required: true
     },
     fecha_caducidad:{
         type:String,
-        required: false
+        required: true
 
     },
     procedencia:{
         type:String,
-        required: false
+        required: true
     }
 });
 
@@ -74,4 +74,14 @@ module.exports.eliminarProducto = function(ID,callback){
     Producto.deleteOne(query,callback);
 }
 
-
+module.exports.modificarProducto = function(ID,campo,valor,callback){
+    const query = {ID:ID}
+    
+    Producto.findOne(query,(error,producto)=>{
+        console.log(valor);
+        producto[campo] = valor;
+        producto.save();
+        console.log(producto.cantidad);
+        callback(error,producto);
+    });
+}

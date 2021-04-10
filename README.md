@@ -1,2 +1,2 @@
-# Proyecto-C-AST-Final
-Proyecto C AST
+# Proyecto-C-AST-Pruebas
+Pruebas del proyecto C de AST

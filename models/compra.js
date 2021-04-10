@@ -41,29 +41,31 @@ module.exports.getCompraByID = function(ID,callback){ //Todos los accesos desde 
 
 module.exports.addCompra = function(Compra,callback){
     
-    Producto.getAllProductsByName(Compra.nombre_producto,(error,productos)=>{
+    Producto.getProductoByID(Compra.ID_producto,(error,productos)=>{
         
-        if(error){
+        if(productos == null){
             console.log("Error,no hay existencias del producto");
             callback(Error,"Error,no hay existencias del producto");
         }else{
-            if(productos.length < Compra.cantidad){
+            if(productos.cantidad < Compra.cantidad){
                 console.log("Error, no hay cantidad suficiente de ese producto");
                 callback(Error,"Error, no hay cantidad suficiente");
 
             }else{ //Comprobaciones correctas
+                    
+                Producto.modificarProducto(Compra.ID_producto,"cantidad",(productos.cantidad - Compra.cantidad),(error,productos)=>{
+                    if(error){
+                        console.log("Error, no se ha podido eliminar el producto de la lista para anadirlo a la compra");
+                        callback(Error,"Error, no se ha podido modificar el objeto de la BBDD");
+                    }else{
+                        console.log("Producto modificado");
 
-                Compra.producto = JSON.stringify(productos[0]); //Guardamos el JSON en datos de producto
+                        Compra.producto = JSON.stringify(productos); //Guardamos el JSON en datos de producto
+                        Compra.producto.cantidad = Compra.cantidad;
 
-                for(let i=0;i<Compra.cantidad;i++){
-                    Producto.eliminarProducto(Compra.ID_producto,(error,productos)=>{
-                        if(error){
-                            console.log("Error, no se ha podido eliminar el producto de la lista para anadirlo a la compra");
-                            callback(Error,"Error, no se ha podido eliminar el objeto de la BBDD");
-                        }
-                    });
-                }
-                Compra.save(callback); //Si todo sale bien guardamos la compra
+                        Compra.save(callback); //Si todo sale bien guardamos la compra
+                    }
+                });
             }
         }
     });
