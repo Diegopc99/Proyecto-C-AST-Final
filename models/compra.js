@@ -25,11 +25,11 @@ const Schema = mongoose.Schema({
     nombre_producto: {
         type:String,
         required: true
-    },
-    producto: {
+    }
+    /*producto: {
         type:String,
         required: true
-    }
+    }*/
 });
 
 const Compra = module.exports = mongoose.model("Compra",Schema); //Hacemos que sea accesible desde fuera de la clase
@@ -39,31 +39,44 @@ module.exports.getCompraByID = function(ID,callback){ //Todos los accesos desde 
     Compra.findOne(query,callback);
 }
 
-module.exports.addCompra = function(Compra,callback){
-    
-    Producto.getProductoByID(Compra.ID_producto,(error,productos)=>{
+module.exports.getAllCompras = function(callback){
+    Compra.find({},callback);
+}
+
+module.exports.addCompra = function(compra,callback){
+
+    Producto.getProductoByID(compra.ID_producto,(error,productos)=>{
         
         if(productos == null){
             console.log("Error,no hay existencias del producto");
             callback(Error,"Error,no hay existencias del producto");
         }else{
-            if(productos.cantidad < Compra.cantidad){
+            if(productos.cantidad < compra.cantidad){
                 console.log("Error, no hay cantidad suficiente de ese producto");
                 callback(Error,"Error, no hay cantidad suficiente");
 
             }else{ //Comprobaciones correctas
                     
-                Producto.modificarProducto(Compra.ID_producto,"cantidad",(productos.cantidad - Compra.cantidad),(error,productos)=>{
+                Producto.modificarProducto(compra.ID_producto,"cantidad",(productos.cantidad - compra.cantidad),(error,productos)=>{
                     if(error){
                         console.log("Error, no se ha podido eliminar el producto de la lista para anadirlo a la compra");
                         callback(Error,"Error, no se ha podido modificar el objeto de la BBDD");
                     }else{
                         console.log("Producto modificado");
 
-                        Compra.producto = JSON.stringify(productos); //Guardamos el JSON en datos de producto
-                        Compra.producto.cantidad = Compra.cantidad;
+                        //Compra.producto = JSON.stringify(productos); //Guardamos el JSON en datos de producto
+                        //Compra.producto.cantidad = Compra.cantidad;
+                        compra.precio_total = compra.cantidad * productos.precio;
 
-                        Compra.save(callback); //Si todo sale bien guardamos la compra
+                        Compra.getAllCompras((error,compras)=>{
+                            //if(compras == null){
+                            //    compra.ID = 1;
+                            //}else{
+                                compra.ID = compras.length ++;
+                            //}
+                            compra.save(callback); //Si todo sale bien guardamos la compra
+                        });
+                        //compra.save(callback); //Si todo sale bien guardamos la compra
                     }
                 });
             }
@@ -77,11 +90,21 @@ module.exports.cancelarCompra = function(ID,callback){
 
     Compra.getCompraByID(ID,(error,compra)=>{
 
-        if(error){
-            console.log("Error al borrar la compra");
+        if(compra == null){
+            console.log("Error, no existe la compra");
             callback(Error,"Error al borrar la compra");
         }else{
-            Compra.deleteOne(query,callback);
+
+            Producto.getProductoByID(compra.ID_producto,(error,productos)=>{
+
+                console.log(productos);
+                
+                Producto.modificarProducto(compra.ID_producto,"cantidad",(productos.cantidad + compra.cantidad),(error,productos)=>{
+                    console.log(productos);
+                    console.log("Compra eliminada y producto reabastecido");
+                    compra.deleteOne(query,callback);
+                }); 
+            });
         }
     });
 }
