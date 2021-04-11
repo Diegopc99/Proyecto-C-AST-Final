@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register.service';
 
+
 @Component({
   selector: 'app-cliente-consultar-compra',
   templateUrl: './cliente-consultar-compra.component.html',
@@ -15,7 +16,9 @@ export class ClienteConsultarCompraComponent implements OnInit {
   ID_producto:String[] = new Array();
   nombre_producto:String[] = new Array();
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService) { 
+    
+  }
 
   ngOnInit(): void {
 
@@ -47,7 +50,23 @@ export class ClienteConsultarCompraComponent implements OnInit {
       
     }
 
-    //this.deleteRow(this.IDsearch);
+    console.log("ID de filtrado: ",this.IDsearch);
+    console.log("Length: ", this.ID.length);
+
+    
+      for(var i = this.ID.length-1; i >= 0; i--){
+        if((this.ID[i]) != (this.IDsearch)){
+          this.ID.splice(i,1);
+          this.cantidad.splice(i,1);
+          this.precio_total.splice(i,1);
+          this.nombre_producto.splice(i,1);
+          this.ID_producto.splice(i,1);
+        }
+      }
+
+      console.log("Resultado del filtrado: ", this.ID);
+    
+
 
     this.registerService.registerProducto(producto, "http://localhost:9000/cliente/listarcompra").subscribe(data => {
 
@@ -64,11 +83,8 @@ export class ClienteConsultarCompraComponent implements OnInit {
   }
 
   deleteRow(id){
-    for(let i = 0; i < this.ID.length; i++){
-      if(this.ID[i] != id){
-        this.ID.splice(i,1);
-      }
-    }
+
+    
   }
 
 

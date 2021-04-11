@@ -10,7 +10,9 @@
       <form class="d-flex" (ngSubmit)="onSubmit()" novalidate="">
         <input class="form-control me-2" type="search" placeholder="ID de compra" aria-label="Search" [(ngModel)]="IDsearch" name="IDsearch" required>
         <button class="btn btn-outline-success btn-sm" type="submit">BUSCAR</button>
+        <button class="btn btn-outline-success btn-sm" onClick="window.location.reload();">REFRESCAR</button>
       </form>
+        
 
     </div>
   </div>
@@ -30,11 +32,13 @@
     <tbody>
 
     <tr *ngFor="let item of ID, index as i">
-      <th scope="row">{{ item }}</th>
+    
+      <td>{{ ID[i] }}</td>
       <td>{{ nombre_producto[i] }}</td>
       <td>{{ ID_producto[i] }}</td>
       <td>{{ cantidad[i] }}</td>
       <td>{{ precio_total[i] }}</td>
+
     </tr>
 
 
