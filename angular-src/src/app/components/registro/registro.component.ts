@@ -59,7 +59,7 @@ export class RegistroComponent implements OnInit {
 
     //console.log(this.registerService.registerBook(book));    
 
-    this.registerService.registerProducto(producto).subscribe(data => {
+    this.registerService.registerProducto(producto, "http://localhost:9000/admin/registro").subscribe(data => {
       if(data.success){
         Swal.fire({
           position: 'center',

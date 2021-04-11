@@ -1,3 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark default">
+  <div class="container-fluid">
+    <a class="navbar-brand">Filtrar compra por ID</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      
+      <form class="d-flex" (ngSubmit)="onSubmit()" novalidate="">
+        <input class="form-control me-2" type="search" placeholder="ID de compra" aria-label="Search" [(ngModel)]="IDsearch" name="IDsearch" required>
+        <button class="btn btn-outline-success btn-sm" type="submit">BUSCAR</button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+
 <table class="table table-dark">
     <thead>
       <tr>
@@ -9,26 +28,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Pepino</td>
-        <td>777</td>
-        <td>5</td>
-        <td>12.50</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Ensalada</td>
-        <td>7173</td>
-        <td>2</td>
-        <td>1.78</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Col de Bruselas</td>
-        <td>8143</td>
-        <td>10</td>
-        <td>5.63</td>
-      </tr>
+
+    <tr *ngFor="let item of ID, index as i">
+      <th scope="row">{{ item }}</th>
+      <td>{{ nombre_producto[i] }}</td>
+      <td>{{ ID_producto[i] }}</td>
+      <td>{{ cantidad[i] }}</td>
+      <td>{{ precio_total[i] }}</td>
+    </tr>
+
+
     </tbody>
   </table>

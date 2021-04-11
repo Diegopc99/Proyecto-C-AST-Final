@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
 
-  private URL = "http://localhost:9000/admin/registro";
+  //private URL = "http://localhost:9000/admin/registro";
 
   constructor(private http:HttpClient) { }
 
-  registerProducto(producto): Observable<any>{
+  registerProducto(producto, URL): Observable<any>{
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export class RegisterService {
     let json = JSON.stringify(producto);
     console.log(json);
 
-    return this.http.post( this.URL, json, options).pipe(map(res =>(res)));
+    return this.http.post( URL, json, options).pipe(map(res =>(res)));
     
     
 
