@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {RouterModule,Routes} from '@angular/router';
+import { CompilerFactory, NgModule } from '@angular/core';
+import { RouterModule,Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -24,6 +24,9 @@ const appRoutes : Routes = [
   {path:'admin',component: HomeComponent},
   {path:'admin/registro',component: RegistroComponent},
   {path:'admin/dashboard',component: DashboardComponent},
+  {path:'cliente/comprar',component: ClienteComprarComponent},
+  {path:'cliente/listarcompra',component: ClienteConsultarCompraComponent},
+  {path:'cliente/cancelarcompra',component: ClienteElimCompraComponent}
 ];
 
 @NgModule({
@@ -50,3 +53,18 @@ const appRoutes : Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/* PARTE OBLIGATORIA
+ Crear un objeto - RegisterService y ValidateService
+ Listar objeto(s)
+ Actualizar un objeto
+ Eliminar un objeto
+ */
+
+/* PARTE OPCIONAL
+ listar producto
+ listar un producto
+ añadir compra
+ listar una Compra
+ eliminar una compra
+ */

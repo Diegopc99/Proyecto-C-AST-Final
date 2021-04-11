@@ -1,6 +1,3 @@
-//CAMBIO EN BRANCH JAVI
-//CAMBIO 2 EN BRANCH JAVI 
-
 const express = require('express');
 const path = require("path");
 const bodyParser = require("body-parser");//Permite parsear info entrante
