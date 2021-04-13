@@ -30,16 +30,14 @@ export class ClienteElimCompraComponent implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Envio realizado',
+            title: 'Compra eliminada',
             showConfirmButton: false,
             timer: 1500
           })
         }else{
           Swal.fire({
             icon: 'error',
-            //title: 'Oops...',
-            text: 'Envio fallido',
-            //footer: '<a href>Why do I have this issue?</a>'
+            text: data.msg,
           })
         }
       })

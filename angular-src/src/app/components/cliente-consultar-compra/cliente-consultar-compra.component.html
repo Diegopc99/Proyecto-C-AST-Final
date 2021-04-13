@@ -5,15 +5,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="collapse navbar-collapse " id="navbarsExampleDefault">
       
       <form class="d-flex" (ngSubmit)="onSubmit()" novalidate="">
         <input class="form-control me-2" type="search" placeholder="ID de compra" aria-label="Search" [(ngModel)]="IDsearch" name="IDsearch" required>
         <button class="btn btn-outline-success btn-sm" type="submit">BUSCAR</button>
-        <button class="btn btn-outline-success btn-sm" onClick="window.location.reload();">REFRESCAR</button>
+      </form>
+      <form class="d-flex" (ngSubmit)="ngOnInit()" novalidate="">
+        <button class="btn btn-outline-success btn-sm" type=submit>REFRESCAR</button>
       </form>
         
-
     </div>
   </div>
 </nav>

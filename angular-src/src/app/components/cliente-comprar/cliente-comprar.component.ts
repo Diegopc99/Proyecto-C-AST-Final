@@ -44,9 +44,7 @@ export class ClienteComprarComponent implements OnInit {
       }else{
         Swal.fire({
           icon: 'error',
-          //title: 'Oops...',
-          text: 'Envio fallido',
-          //footer: '<a href>Why do I have this issue?</a>'
+          text: data.msg,
         })
       }
     })

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register.service';
 
-
 @Component({
   selector: 'app-cliente-consultar-compra',
   templateUrl: './cliente-consultar-compra.component.html',
@@ -47,7 +46,6 @@ export class ClienteConsultarCompraComponent implements OnInit {
     console.log("ID de filtrado: ",this.IDsearch);
     console.log("Length: ", this.ID.length);
 
-    
       for(var i = this.ID.length-1; i >= 0; i--){
         if((this.ID[i]) != (this.IDsearch)){
           this.ID.splice(i,1);
