@@ -24,7 +24,7 @@ export class ClienteConsultarCompraComponent implements OnInit {
 
     let body;
     let objetos;
-    this.registerService.registerProducto(body, "http://localhost:9000/cliente/listartodascompras").subscribe(data => {
+    this.registerService.register(body, "http://localhost:9000/cliente/listartodascompras").subscribe(data => {
 
       objetos = data.msg;
 
@@ -44,12 +44,6 @@ export class ClienteConsultarCompraComponent implements OnInit {
 
   onSubmit(){
 
-    const producto= {
-
-      ID: this.IDsearch
-      
-    }
-
     console.log("ID de filtrado: ",this.IDsearch);
     console.log("Length: ", this.ID.length);
 
@@ -65,31 +59,6 @@ export class ClienteConsultarCompraComponent implements OnInit {
       }
 
       console.log("Resultado del filtrado: ", this.ID);
-    
-
-
-    this.registerService.registerProducto(producto, "http://localhost:9000/cliente/listarcompra").subscribe(data => {
-
-      if(data.success){
-        console.log(data.msg);
-      }else{
-        
-      }
-
-    })
      
-    
-
   }
-
-  deleteRow(id){
-
-    
-  }
-
-
-
-
-
-
 }

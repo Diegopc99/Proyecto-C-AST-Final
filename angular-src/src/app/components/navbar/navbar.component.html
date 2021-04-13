@@ -9,19 +9,45 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           
           <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" aria-current="page" [routerLink]="['admin']">Home</a>
+            <a class="nav-link" aria-current="page" [routerLink]="['']">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" [routerLink]="['admin/registro']">Registro</a>
+
+          <!--LISTADO DE ACCIONES DE ADMIN-->
+          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" [routerLink]="['admin/registro']">Registrar</a>
+          </li>
+          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" [routerLink]="['admin/consultar']">Listar</a>
+          </li>
+          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" [routerLink]="['admin/modificar']">Modificar</a>
+          </li>
+          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" [routerLink]="['admin/eliminar']">Eliminar</a>
           </li>
         
-          <!-- ELIMINAR DESPUES-->
-          <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+          <!--LISTADO DE ACCIONES DE CLIENTE-->
+          <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+            <a class="nav-link" [routerLink]="['cliente/comprar']">Comprar</a>
+          </li>
+          <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
             <a class="nav-link" [routerLink]="['cliente/listarcompra']">Listar Compras</a>
           </li>
+          <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+            <a class="nav-link" [routerLink]="['cliente/cancelarcompra']">Cancelar Compra</a>
+          </li>
+          </ul>
 
+          <!--Botones para cambio de ususario-->
+          <ul class="navbar-nav ml-auto">
+            <form (ngSubmit)="onSubmit('cliente')" novalidate="">
+                <button class="btn btn-outline-success" name="btn-cliente" type="submit" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">CLIENTE</button>
+            </form>
 
-        </ul>
+            <form (ngSubmit)="onSubmit('admin')" novalidate="">
+              <button class="btn btn-outline-success" name="btn-admin" type="submit" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">ADMIN</button>
+            </form>
+          </ul>
       </div>
     </div>
   </nav>

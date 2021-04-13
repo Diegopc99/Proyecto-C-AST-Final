@@ -12,7 +12,7 @@ export class RegisterService {
 
   constructor(private http:HttpClient) { }
 
-  registerProducto(producto, URL): Observable<any>{
+  register(producto, URL): Observable<any>{
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
