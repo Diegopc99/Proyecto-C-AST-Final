@@ -32,4 +32,37 @@ router.post("/registro",(req,res,next)=>{
     })
 });
 
+router.get('/consultar', (req, res, next) => {
+    Producto.getAllProducts((err, Producto) => {
+        if(err){
+            res.json({
+                success: false,
+                msg:"Error al listar"
+            });
+        }else{
+            res.json({
+                success: true,
+                msg: Producto
+            });
+        }
+    });
+       
+});
+
+router.delete('/consultar/:id', (req, res, next)=>{
+    Producto.eliminarProducto(req.params.id, (err)=>{
+        if(err){
+            res.json({
+                success: false,
+                msg:"Error al eliminar"
+            });
+        }else{
+            res.json({
+                success: true,
+                msg: "Eliminado exitosamente"
+            });
+        }
+    });
+})
+
 module.exports = router;
