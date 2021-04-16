@@ -20,7 +20,7 @@ mongoose.connection.on("error",(err)=>{
 const app = express();
 const port = process.env.PORT || 9000; //Busca en las variables de entorno o sino en el 9000
 
-
+//proba1
 
 // CORS Middleware
 app.use(cors());
