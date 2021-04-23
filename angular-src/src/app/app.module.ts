@@ -10,10 +10,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
+import { FilterPipe } from "./components/consultar/filter.pipe";
 
 import { ValidateService} from './services/validate.service';
 import { RegisterService } from './services/register.service';
-import { EliminarComponent } from './components/eliminar/eliminar.component';
 import { ConsultarComponent } from './components/consultar/consultar.component';
 import { ClienteComprarComponent } from './components/cliente-comprar/cliente-comprar.component';
 import { ClienteElimCompraComponent } from './components/cliente-elim-compra/cliente-elim-compra.component';
@@ -27,7 +27,6 @@ const appRoutes : Routes = [
   {path:'admin/registro',component: RegistroComponent},
   {path:'admin/consultar',component: ConsultarComponent},
   {path:'admin/modificar',component: ModificarComponent},
-  {path:'admin/eliminar',component: EliminarComponent},
   {path:'cliente/comprar',component: ClienteComprarComponent},
   {path:'cliente/listarcompra',component: ClienteConsultarCompraComponent},
   {path:'cliente/cancelarcompra',component: ClienteElimCompraComponent}
@@ -39,12 +38,12 @@ const appRoutes : Routes = [
     NavbarComponent,
     RegistroComponent,
     HomeComponent,
-    EliminarComponent,
     ConsultarComponent,
     ClienteComprarComponent,
     ClienteElimCompraComponent,
     ClienteConsultarCompraComponent,
-    ModificarComponent
+    ModificarComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

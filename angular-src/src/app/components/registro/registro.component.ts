@@ -67,6 +67,8 @@ export class RegistroComponent implements OnInit {
           title: 'Envio realizado',
           showConfirmButton: false,
           timer: 1500
+        }).then(()=>{
+          location.reload();
         })
       }else{
         Swal.fire({

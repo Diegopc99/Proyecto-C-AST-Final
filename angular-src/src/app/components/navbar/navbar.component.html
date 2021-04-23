@@ -22,9 +22,6 @@
           <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
             <a class="nav-link" [routerLink]="['admin/modificar']">Modificar</a>
           </li>
-          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" [routerLink]="['admin/eliminar']">Eliminar</a>
-          </li>
         
           <!--LISTADO DE ACCIONES DE CLIENTE-->
           <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
