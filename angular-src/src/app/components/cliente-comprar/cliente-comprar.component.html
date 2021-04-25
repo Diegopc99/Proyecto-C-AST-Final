@@ -1,19 +1,29 @@
-<form (ngSubmit)="onSubmit()" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
-    <div>
-        <h2>Compra de alimentos</h2>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark default">
+    <div class="container-fluid">
+      <a class="navbar-brand">Compra de productos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-    <div class="mb-3">
+  </nav>
+
+
+<form (ngSubmit)="onSubmit()" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
+
+    <div class="mb-3 margen">
     <label class="form-label">ID de producto</label>
     <input class="form-control" [(ngModel)]="ID_producto" name="ID_producto" required>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 margen">
     <label class="form-label">Nombre de producto</label>
     <input class="form-control" [(ngModel)]="nombre_producto" name="nombre_producto" required>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 margen">
     <label class="form-label">Cantidad</label>
     <input class="form-control" [(ngModel)]="cantidad" name="cantidad" required>
     </div>
     
-    <input type="submit" class="btn btn-primary" value="Enviar">
+    <div class="margen"><input type="submit" class="btn btn-primary" value="Enviar"></div>
+    
 </form>
+

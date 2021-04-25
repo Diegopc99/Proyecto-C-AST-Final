@@ -1,7 +1,9 @@
 <form (ngSubmit)="onSubmit()" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
-    <div>
+    <div class="margen">
         <h2>Registro de alimentos</h2>
     </div>
+
+    <!-- 
     <div class="mb-3">
     <label class="form-label">ID</label>
     <input class="form-control" [(ngModel)]="ID" name="ID" required>
@@ -38,6 +40,109 @@
     <label class="form-label">Procedencia</label>
     <input class="form-control" [(ngModel)]="procedencia" name="procedencia" required>
     </div>
+    -->
+
+
+
+<div class="row margen">
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">ID</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="ID" name="ID" required>
+    </div>
+    </div>
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="nombre" name="nombre" required>
+    </div>
+    </div>
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Marca</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="marca" name="marca" required>
+    </div>
+    </div>
+</div>
+
+<div class="row margen">
     
-    <input type="submit" class="btn btn-primary" value="Enviar">
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Descripción</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="descripcion" name="descripcion" required>
+    </div>
+    </div>
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Sección</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="seccion" name="seccion" required>
+    </div>
+    </div>
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Precio</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="precio" name="precio" required>
+    </div>
+    </div>    
+
+</div>
+
+<div class="row margen">
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Cantidad</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="cantidad" name="cantidad" required>
+    </div>
+    </div>
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de caducidad</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="fecha_caducidad" name="fecha_caducidad" placeholder="dd/mm/aaaa" required>
+    </div>
+    </div>
+
+    <div clas="col-sm-4">
+    <div class="input-group input-group-sm margen">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Procedencia</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="procedencia" name="procedencia" required>
+    </div>
+    </div>
+
+</div>
+
+
+    
+    
+
+
+
+
+    
+    <div class="margen"><input type="submit" class="btn btn-primary" value="Enviar"></div>
 </form>
