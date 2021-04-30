@@ -93,24 +93,6 @@ router.post("/listarcompra",(req,res,next)=>{
     })
 });
 
-router.post("/listartodascompras",(req,res,next)=>{
-
-    Compra.getAllCompras((err,compra)=>{
-
-        if(err){
-            res.json({
-                success: false,
-                msg:"Error en listado de todas las compras"
-            });
-        }else{
-            res.json({
-                success: true,
-                msg: compra,
-            });
-        }
-    })
-});
-
 router.post("/cancelarcompra",(req,res,next)=>{
 
     const ID = req.body.ID;

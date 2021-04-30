@@ -7,47 +7,32 @@
   
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          
           <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" aria-current="page" [routerLink]="['']">Home</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="['admin']">Home</a>
           </li>
-
-          <!--LISTADO DE ACCIONES DE ADMIN-->
-          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" [routerLink]="['admin/registro']">Registrar</a>
+          <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" [routerLink]="['admin/registro']">Registro</a>
           </li>
-          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" [routerLink]="['admin/consultar']">Listar</a>
+          <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" [routerLink]="['admin/consultar']">Consultar</a>
           </li>
-          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" [routerLink]="['admin/modificar']">Modificar</a>
+          <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+            <a class="nav-link" [routerLink]="['admin/dashboard']">Dashboard</a>
           </li>
-          <li *ngIf="admin" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-            <a class="nav-link" [routerLink]="['admin/eliminar']">Eliminar</a>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </li>
-        
-          <!--LISTADO DE ACCIONES DE CLIENTE-->
-          <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
-            <a class="nav-link" [routerLink]="['cliente/comprar']">Comprar</a>
-          </li>
-          <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
-            <a class="nav-link" [routerLink]="['cliente/listarcompra']">Listar Compras</a>
-          </li>
-          <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
-            <a class="nav-link" [routerLink]="['cliente/cancelarcompra']">Cancelar Compra</a>
-          </li>
-          </ul>
-
-          <!--Botones para cambio de ususario-->
-          <ul class="navbar-nav ml-auto">
-            <form (ngSubmit)="onSubmit('cliente')" novalidate="">
-                <button class="btn btn-outline-success" name="btn-cliente" type="submit" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">CLIENTE</button>
-            </form>
-
-            <form (ngSubmit)="onSubmit('admin')" novalidate="">
-              <button class="btn btn-outline-success" name="btn-admin" type="submit" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">ADMIN</button>
-            </form>
-          </ul>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
     </div>
   </nav>

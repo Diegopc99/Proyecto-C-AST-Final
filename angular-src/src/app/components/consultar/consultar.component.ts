@@ -14,6 +14,8 @@ export class ConsultarComponent implements OnInit {
 
   productos: any = [];
   filtro: string;
+  searchText: string;
+  noResults: string;
 
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class ConsultarComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(()=>{
-          location.reload();
+          this.getListaProductos();
         });
       }else{
         Swal.fire({
@@ -50,7 +52,7 @@ export class ConsultarComponent implements OnInit {
   } );
 }
 
-  buscarProducto(){
+  buscarProducto(searchText: string){
     console.log(this.filtro);
   }
 

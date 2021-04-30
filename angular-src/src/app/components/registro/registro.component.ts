@@ -59,7 +59,7 @@ export class RegistroComponent implements OnInit {
 
     //console.log(this.registerService.registerBook(book));    
 
-    this.registerService.register(producto, "http://localhost:9000/admin/registro").subscribe(data => {
+    this.registerService.registerProducto(producto).subscribe(data => {
       if(data.success){
         Swal.fire({
           position: 'center',
@@ -67,7 +67,9 @@ export class RegistroComponent implements OnInit {
           title: 'Envio realizado',
           showConfirmButton: false,
           timer: 1500
-        })
+        })//.then(()=>{              <------- Para que recargue y ponga los campos vacíos, pero ahora no la pongo por comodidad
+          //location.reload();
+        //});
       }else{
         Swal.fire({
           icon: 'error',
