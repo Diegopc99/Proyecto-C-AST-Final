@@ -19,6 +19,7 @@ import { ClienteComprarComponent } from './components/cliente-comprar/cliente-co
 import { ClienteElimCompraComponent } from './components/cliente-elim-compra/cliente-elim-compra.component';
 import { ClienteConsultarCompraComponent } from './components/cliente-consultar-compra/cliente-consultar-compra.component';
 import { ModificarComponent } from './components/modificar/modificar.component';
+import { ClienteConsultarArticulosComponent } from './components/cliente-consultar-articulos/cliente-consultar-articulos.component';
 
 
 const appRoutes : Routes = [
@@ -29,7 +30,8 @@ const appRoutes : Routes = [
   {path:'admin/modificar',component: ModificarComponent},
   {path:'cliente/comprar',component: ClienteComprarComponent},
   {path:'cliente/listarcompra',component: ClienteConsultarCompraComponent},
-  {path:'cliente/cancelarcompra',component: ClienteElimCompraComponent}
+  {path:'cliente/cancelarcompra',component: ClienteElimCompraComponent},
+  {path:'cliente/listararticulos', component: ClienteConsultarArticulosComponent}
 ];
 
 @NgModule({
@@ -43,7 +45,8 @@ const appRoutes : Routes = [
     ClienteElimCompraComponent,
     ClienteConsultarCompraComponent,
     ModificarComponent,
-    FilterPipe
+    FilterPipe,
+    ClienteConsultarArticulosComponent
   ],
   imports: [
     BrowserModule,
