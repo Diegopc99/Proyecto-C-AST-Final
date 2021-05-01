@@ -65,18 +65,37 @@ module.exports.getProductoByName = function(nombre,callback){
     Producto.findOne(query,callback);
 }
 
-module.exports.addProducto = function(Producto,callback){
-    Producto.save(callback);
+module.exports.addProducto = function(producto,callback){
+
+    console.log(producto.ID);
+
+    Producto.getProductoByID(producto.ID,(error,productos)=>{
+        console.log(productos);
+        if(productos == undefined){
+            producto.save(callback);
+        }else{
+            callback(Error,"Producto con ese ID ya existe");
+        }
+    });
 }
 
 module.exports.eliminarProducto = function(ID,callback){
-    const query = {ID:ID}; 
-    Producto.deleteOne(query,callback);
+    
+    Producto.getProductoByID(ID,(error,productos)=>{
+
+        if(productos == undefined){
+            callback(Error,"Producto no existe en la BBDD");
+        }else{
+            const query = {ID:ID}; 
+            Producto.deleteOne(query,callback);
+        }
+    });
 }
 
 module.exports.modificarProducto = function(ID,campo,valor,callback){
+
     const query = {ID:ID}
-    
+
     Producto.findOne(query,(error,producto)=>{
         console.log(valor);
         producto[campo] = valor;

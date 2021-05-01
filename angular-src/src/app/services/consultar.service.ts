@@ -21,6 +21,15 @@ export class ConsultarService {
   getLista(): Observable<any>{
 
     return this.http.get(this.URL);
+    /*let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+      });
+    let options = { headers: headers };
+    
+    //let json = JSON.stringify();
+    //console.log(json);
+
+    return this.http.post( this.URL, "", options).pipe(map(res =>(res)));*/
 
   }
 

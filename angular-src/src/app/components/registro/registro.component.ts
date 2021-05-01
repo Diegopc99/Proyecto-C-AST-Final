@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ValidateService} from '../../services/validate.service';
 import {RegisterService} from '../../services/register.service';
 import  Swal  from 'sweetalert2';
+import { FormsModule, NgForm } from '@angular/forms';
+import { formatCurrency } from '@angular/common';
+import { AstMemoryEfficientTransformer } from '@angular/compiler';
 
 @Component({
   selector: 'app-registro',
@@ -27,7 +30,7 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit(MyForm: NgForm){
     const producto= {
 
       ID: this.ID,
@@ -68,13 +71,13 @@ export class RegistroComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(()=>{
-          location.reload();
+          MyForm.reset();
         })
       }else{
         Swal.fire({
           icon: 'error',
           //title: 'Oops...',
-          text: 'Envio fallido',
+          text: data.msg,
           //footer: '<a href>Why do I have this issue?</a>'
         })
       }
@@ -86,3 +89,4 @@ export class RegistroComponent implements OnInit {
 
   
 }
+

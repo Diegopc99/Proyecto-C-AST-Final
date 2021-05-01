@@ -3,6 +3,7 @@ import { ConsultarService } from '../../services/consultar.service';
 import { HttpClient } from '@angular/common/http';
 import  Swal  from 'sweetalert2';
 import { NgForm } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { NgForm } from '@angular/forms';
 })
 export class ConsultarComponent implements OnInit {
 
-  constructor(private consultarService: ConsultarService) { }
+  constructor(private consultarService: ConsultarService,private router:Router) { }
+  
   productos: any = [];
   filtro: String;
   searchText: string;
@@ -31,36 +33,8 @@ export class ConsultarComponent implements OnInit {
       (err=>console.log('Error al listar', err)));
   }
 
-
-  deleteProducto(id: String){
-    
-    this.consultarService.borrarProducto(id).subscribe((data) => {
-      console.log("data: "+data);
-      if(data.success){
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Producto eliminado',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(()=>{
-          this.buscarProducto("");
-        })
-      }else{
-        Swal.fire({
-          icon: 'error',
-          text: 'Ha ocurrido un error',
-
-        })
-      }
-    });
-
-
-  }
-
-
-  buscarProducto(cadena: String){
-    this.consultarService.filtrarProductos(cadena).subscribe();
+  buscarProducto(searchText: String){
+    this.consultarService.filtrarProductos(searchText).subscribe();
   }
 
 

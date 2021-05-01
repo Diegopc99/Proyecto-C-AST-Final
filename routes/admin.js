@@ -17,19 +17,59 @@ router.post("/registro",(req,res,next)=>{
         procedencia: req.body.procedencia
     });
 
-    Producto.addProducto(newProducto,(err,Producto)=>{
+    Producto.addProducto(newProducto,(err,status)=>{
         if(err){
             res.json({
                 success: false,
-                msg:"Error en registro"
+                msg: status
             });
         }else{
             res.json({
                 success: true,
-                msg: "Producto registrado"
+                msg: status
             });
         }
     })
+});
+
+router.post("/modificar",(req,res,next)=>{
+
+    let campos = ["ID","nombre","marca","descripcion","seccion","precio","cantidad","fecha_caducidad","procedencia"];
+
+    let valores =[req.body.ID,req.body.nombre,req.body.marca,req.body.descripcion,req.body.seccion,req.body.precio,req.body.cantidad,req.body.fecha_caducidad,req.body.procedencia];
+    
+    const ID = valores[0];
+    let error = false;
+
+    Producto.getProductoByID(ID,(err,productos)=>{
+        if(productos == undefined){
+            res.json({
+                success: false,
+                msg:"No existe el producto en la BBDD"
+            });
+        }else{
+
+            for(i=0;i<9;i++){
+                Producto.modificarProducto(ID,campos[i],valores[i],(err,Producto)=>{
+                    if(err){
+                        error=true;
+                    }
+                });
+            }
+
+            if(error){
+                res.json({
+                    success: false,
+                    msg:"Error en modificacion"
+                });
+            }else{
+                res.json({
+                    success: true,
+                    msg: "Modificacion completada"
+                });
+            }
+        }
+    });
 });
 
 router.get('/consultar', (req, res, next) => {
@@ -45,38 +85,27 @@ router.get('/consultar', (req, res, next) => {
             res.json({
                 success:true,
                 msg: Producto
-            });
-            
-        }
-        
-    })
-  
-    
-})
+            });   
+        }  
+    }) 
+});
 
-router.delete('/consultar/:id', (req, res, next) => {
+router.post("/eliminar",(req,res, next) => {
 
-    Producto.eliminarProducto(req.params.id, (err)=>{
-
-        console.log("ID del producto: "+req.params.id);
-        console.log("Error: "+err);
+    Producto.eliminarProducto(req.body.ID,(err,status)=>{
 
         if (err){
             res.json({
                 success: false,
-                msg: "Error al eliminar el producto con ID "+req.params.id
+                msg: status
             });
         } else {
             res.json({
                 success:true,
-                msg: "Producto con ID "+req.params.id+ " ha sido eliminado exitosamente"
-            });
-            
-        }
-        
-    })
-  
-    
-})
+                msg: status
+            }); 
+        }  
+    });
+});
 
 module.exports = router;

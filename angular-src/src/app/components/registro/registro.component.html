@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
     <div>
         <h2>Registro de alimentos</h2>
     </div>

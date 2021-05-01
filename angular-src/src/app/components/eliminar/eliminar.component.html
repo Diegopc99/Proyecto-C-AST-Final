@@ -1,1 +1,11 @@
-<p>eliminar works!</p>
+<form (ngSubmit)="onSubmit()" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
+    <div>
+        <h2>Eliminacion de producto</h2>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">ID de producto</label>
+    <input class="form-control" [(ngModel)]="ID_producto" name="ID_producto" required>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Enviar">
+</form>
