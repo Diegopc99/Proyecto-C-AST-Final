@@ -57,18 +57,3 @@ const appRoutes : Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-/* PARTE OBLIGATORIA
- Crear un objeto - RegisterService y ValidateService
- Listar objeto(s)
- Actualizar un objeto
- Eliminar un objeto
- */
-
-/* PARTE OPCIONAL
- listar producto
- listar un producto
- añadir compra
- listar una Compra
- eliminar una compra
- */
