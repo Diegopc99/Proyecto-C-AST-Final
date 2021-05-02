@@ -108,4 +108,23 @@ router.post("/eliminar",(req,res, next) => {
     });
 });
 
+router.post("/listarIDMongo",(req,res,next)=>{
+    
+    const ID = req.body.ID;
+    Producto.getItemByIDMongo(ID,(err,item)=>{
+
+        if(err){
+            res.json({
+                success: false,
+                msg:"Error listando por Mongo"
+            });
+        }else{
+            res.json({
+                success: true,
+                msg: item,
+            });
+        }
+    })
+});
+
 module.exports = router;

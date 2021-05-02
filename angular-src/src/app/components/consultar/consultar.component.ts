@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import  Swal  from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { RegisterService } from '../../services/register.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class ConsultarComponent implements OnInit {
 
-  constructor(private consultarService: ConsultarService,private router:Router) { }
+  constructor(private consultarService: ConsultarService,private router:Router, private registerService: RegisterService) { }
   
   productos: any = [];
   filtro: String;
@@ -35,6 +36,13 @@ export class ConsultarComponent implements OnInit {
 
   buscarProducto(searchText: String){
     this.consultarService.filtrarProductos(searchText).subscribe();
+  }
+
+  buscarIDMongo(searchText: String){
+    let body;
+    this.registerService.register(body, "http://localhost:9000/cliente/listarIDMongo").subscribe(data => {
+      console.log("Resultado del filtrado: ", data);
+  });
   }
 
 

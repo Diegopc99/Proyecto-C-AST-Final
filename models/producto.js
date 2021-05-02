@@ -104,3 +104,11 @@ module.exports.modificarProducto = function(ID,campo,valor,callback){
         callback(error,producto);
     });
 }
+
+module.exports.getItemByIDMongo = function(ID, callback){
+
+    var o_id = new ObjectId(ID);
+    const query = {_id:o_id}
+
+    Producto.findOne(query,callback);
+}
