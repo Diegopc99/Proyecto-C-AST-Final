@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark default">
     <div class="container-fluid">
-      <a class="navbar-brand">Mean-Stack</a>
+      <a class="navbar-brand">Super-Stack</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,6 +27,9 @@
           </li>
         
           <!--LISTADO DE ACCIONES DE CLIENTE-->
+          <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+            <a class="nav-link" [routerLink]="['cliente/listararticulos']">Listar artículos</a>
+          </li>
           <li *ngIf="cliente" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
             <a class="nav-link" [routerLink]="['cliente/comprar']">Comprar</a>
           </li>
