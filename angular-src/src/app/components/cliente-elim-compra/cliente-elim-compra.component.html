@@ -1,12 +1,19 @@
-<form (ngSubmit)="onSubmit()" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
-    <div>
-        <h2>Cancelacion de compra</h2>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark default">
+    <div class="container-fluid">
+      <a class="navbar-brand">Cancelación de una compra</a>
     </div>
-    <div class="mb-3">
-    <label class="form-label">ID de compra</label>
-    <input class="form-control" [(ngModel)]="ID_compra" name="ID_compra" required>
+</nav>
+
+<div class="margen ancho">
+<form (ngSubmit)="onSubmit()" novalidate=""> <!-- novalidate evita la validacion sobre HTML5 forzandolo a hacerlo con angular-->
+
+    <div class="input-group mb-3 margentop">
+        <span class="input-group-text" id="basic-addon1">ID de compra</span>
+        <input class="form-control" [(ngModel)]="ID_compra" name="ID_compra" placeholder="ID de compra" required>
     </div>
 
     <input type="submit" class="btn btn-primary" value="Enviar">
+
 </form>
+</div>
 
