@@ -42,42 +42,52 @@ export class ModificarComponent implements OnInit {
     }
     let mensaje = "";
 
+
+    const regexcant = /^[0-9]*$/; //Regexp para comprobar si un string solo tiene numeros,
+    const regexprecio = /^[0-9].*$/;
     
-      
-    if(isNaN(producto.precio) && producto.precio != undefined){
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Precio no tiene un valor valido',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      return false;
+    if(producto.precio){
+      if(!regexprecio.test(String(producto.precio))){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Precio no tiene un valor valido',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(document.getElementById('precio'));
+        console.log(producto.precio);
+        return false;
+      }
     }
-      
-      
-    if(isNaN(producto.cantidad) && producto.precio != undefined){
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Cantidad no tiene un valor valido',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      return false;
+    
+    if(producto.cantidad){
+      if(!regexcant.test(String(producto.cantidad))){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Cantidad no tiene un valor valido',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(document.getElementById('cantidad'));
+        return false;
+      }
     }
       
       
     const regexfecha = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
-    if(!regexfecha.test(producto.fecha_caducidad) && producto.fecha_caducidad !=undefined){
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Formato de fecha no valido',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      return false;
+    if(producto.fecha_caducidad){
+      if(!regexfecha.test(producto.fecha_caducidad)){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Formato de fecha no valido',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        return false;
+      }
     }
     
     
