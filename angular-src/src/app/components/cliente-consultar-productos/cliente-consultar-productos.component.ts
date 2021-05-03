@@ -33,7 +33,7 @@ export class ClienteConsultarProductosComponent implements OnInit {
       for (let i = 0; i < objetos.length; i++) {
         this.ID[i] = objetos[i].ID;
         this.cantidad[i] = objetos[i].cantidad;
-        this.precio[i] = objetos[i].precio_total;
+        this.precio[i] = objetos[i].precio;
         this.nombre_producto[i] = objetos[i].nombre;
         this.marca[i] = objetos[i].marca;
         this.descripcion[i] = objetos[i].descripcion;

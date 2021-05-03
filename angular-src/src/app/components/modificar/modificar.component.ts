@@ -16,9 +16,9 @@ export class ModificarComponent implements OnInit {
   marca: String ="";
   descripcion: String ="";
   seccion: String = "";
-  precio: Number;
-  cantidad: Number;
-  fecha_caducidad: String="";
+  precio: number;
+  cantidad: number;
+  fecha_caducidad: string="";
   procedencia: String="";
 
   constructor(private validateService: ValidateService,private registerService: RegisterService) { }
@@ -42,19 +42,45 @@ export class ModificarComponent implements OnInit {
     }
     let mensaje = "";
 
-    //Campos requeridos
-    /*mensaje = this.validateService.validateRegister(producto);
-    console.log(mensaje);
-    if(mensaje!="correcto"){
-      //console.log("Campos sin cubrir");
+    
+      
+    if(isNaN(producto.precio) && producto.precio != undefined){
       Swal.fire({
+        position: 'center',
         icon: 'error',
-        //title: 'Oops...',
-        text: mensaje,
-        //footer: '<a href>Why do I have this issue?</a>'
-      })
+        title: 'Precio no tiene un valor valido',
+        showConfirmButton: false,
+        timer: 1500
+      });
       return false;
-    }*/
+    }
+      
+      
+    if(isNaN(producto.cantidad) && producto.precio != undefined){
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Cantidad no tiene un valor valido',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      return false;
+    }
+      
+      
+    const regexfecha = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+    if(!regexfecha.test(producto.fecha_caducidad) && producto.fecha_caducidad !=undefined){
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Formato de fecha no valido',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      return false;
+    }
+    
+    
 
     //console.log(this.registerService.registerBook(book));    
 
