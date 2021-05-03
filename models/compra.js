@@ -68,14 +68,27 @@ module.exports.addCompra = function(compra,callback){
                         //Compra.producto.cantidad = Compra.cantidad;
                         compra.precio_total = compra.cantidad * productos.precio;
 
-                        Compra.getAllCompras((error,compras)=>{
+                        //Compra.getAllCompras((error,compras)=>{
                             //if(compras == null){
                             //    compra.ID = 1;
                             //}else{
-                                compra.ID = compras.length ++;
+                                //compra.ID = compras.length ++;
+                                Compra.findOne({},null,{sort:{ID:-1}},function(error,ultimaCompra){
+                                    console.log("UltimaCompra: "+ultimaCompra);
+                                    if(ultimaCompra==null){
+                                        compra.ID=1;
+                                        compra.save(callback); //Si todo sale bien guardamos la compra
+                                    }else{
+                                        compra.ID = String(parseInt(ultimaCompra.ID) + 1);
+                                        compra.save(callback); 
+                                    }
+                                });
+                                console.log("Compra ID:"+compra.ID);
+
+
                             //}
-                            compra.save(callback); //Si todo sale bien guardamos la compra
-                        });
+                           // compra.save(callback); //Si todo sale bien guardamos la compra
+                        //});
                         //compra.save(callback); //Si todo sale bien guardamos la compra
                     }
                 });
